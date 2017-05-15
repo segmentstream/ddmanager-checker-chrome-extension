@@ -1,0 +1,7 @@
+node_modules
+dist
+dist.zip
+app/scripts
+.DS_Store
+app/bower_components
+package

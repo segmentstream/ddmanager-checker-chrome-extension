@@ -1,0 +1,486 @@
+{
+  "Viewed Page": [
+    ["website.type", { "notEmpty": true, "string": true }],
+    ["website.environment", { "notEmpty": true, "string": true }],
+    ["website.language", { "notEmpty": true, "string": true }],
+    ["website.region", { "notEmpty": true, "string": true }, { "setting": "region" }],
+    ["website.regionId", { "notEmpty": true, "string": true }, { "setting": "region" }],
+    ["page.type", { "notEmpty": true, "string": true }],
+    ["page.breadcrumb", { "notEmpty": true, "array": true }, {
+      "dependencies": [
+        ["page.type", { "oneOf": ["category", "listing", "search", "content", "other", "checkout"] }]
+      ]
+    }],
+    ["page.url", { "notEmpty": true, "string": true }],
+    ["page.path", { "notEmpty": true, "string": true }],
+    ["page.queryString", { "string": true }, {
+      "dependencies": [
+        ["user.queryString", { "notEmpty": true }]
+      ]
+    }],
+    ["page.name", { "notEmpty": true, "string": true }, { "setting": "namedPages" }],
+    ["page.category", { "notEmpty": true, "string": true }, { "setting": "categorizedPages"}],
+    ["user.isLoggedIn", { "notEmpty": true, "boolean": true }, { "setting": "authentication" }],
+    ["user.userId", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["user.isLoggedIn", { "equals": true }]
+      ]
+    }],
+    ["user.email", { "email": true }, {
+      "dependencies": [
+        ["user.email", { "notEmpty": true }]
+      ]
+    }],
+    ["product.id", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["page.type", { "equals": "product" }]
+      ]
+    }],
+    ["product.skuCode", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["page.type", { "equals": "product" }]
+      ]
+    }],
+    ["product.name", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["page.type", { "equals": "product" }]
+      ]
+    }],
+    ["product.category", { "notEmpty": true, "array": true }, {
+      "dependencies": [
+        ["page.type", { "equals": "product" }]
+      ]
+    }],
+    ["product.categoryId", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["page.type", { "equals": "product" }]
+      ]
+    }],
+    ["product.unitPrice", { "notEmpty": true, "numeric": true }, {
+      "dependencies": [
+        ["page.type", { "equals": "product" }]
+      ]
+    }],
+    ["product.unitSalePrice", { "notEmpty": true, "numeric": true }, {
+      "dependencies": [
+        ["page.type", { "equals": "product" }]
+      ]
+    }],
+    ["product.stock", { "notEmpty": true, "numeric": true }, {
+      "dependencies": [
+        ["page.stock", { "equals": "product" }]
+      ]
+    }],
+    ["listing.categoryId", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["page.type", { "oneOf": ["category", "listing"] }]
+      ]
+    }],
+    ["listing.category", { "notEmpty": true, "array": true }, {
+      "dependencies": [
+        ["page.type", { "oneOf": ["category", "listing"] }]
+      ]
+    }],
+    ["listing.query", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["page.type", { "equals": "search" }]
+      ]
+    }],
+    ["listing.listId", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["page.type", { "oneOf": ["category", "listing", "search"] }]
+      ]
+    }],
+    ["listing.listName", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["page.type", { "oneOf": ["category", "listing", "search"] }]
+      ]
+    }],
+    ["listing.resultCount", { "notEmpty": true, "numeric": true }, {
+      "dependencies": [
+        ["page.type", { "oneOf": ["category", "listing", "search"] }]
+      ]
+    }],
+    ["listing.pagesCount", { "notEmpty": true, "numeric": true }, {
+      "dependencies": [
+        ["page.type", { "oneOf": ["category", "listing", "search"] }]
+      ]
+    }],
+    ["listing.currentPage", { "notEmpty": true, "numeric": true }, {
+      "dependencies": [
+        ["page.type", { "oneOf": ["category", "listing", "search"] }]
+      ]
+    }],
+    ["listing.items[].id", { "notEmpty": true }, {
+      "dependencies": [
+        ["page.type", {"oneOf": ["category", "listing", "search"] }]
+      ]
+    }],
+    ["listing.items[].skuCode", { "notEmpty": true }, {
+      "dependencies": [
+        ["page.type", {"oneOf": ["category", "listing", "search"] }]
+      ]
+    }],
+    ["listing.items[].name", { "notEmpty": true }, {
+      "dependencies": [
+        ["page.type", { "oneOf": ["category", "listing", "search"] }]
+      ]
+    }],
+    ["listing.items[].category", { "notEmpty": true, "array": true }, {
+      "dependencies": [
+        ["page.type", { "oneOf": ["category", "listing", "search"] }]
+      ]
+    }],
+    ["listing.items[].categoryId", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["page.type", { "oneOf": ["category", "listing", "search"] }]
+      ]
+    }],
+    ["listing.items[].unitPrice", { "notEmpty": true, "numeric": true }, {
+      "dependencies": [
+        ["page.type", { "oneOf": ["category", "listing", "search"] }]
+      ]
+    }],
+    ["listing.items[].unitSalePrice", { "notEmpty": true, "numeric": true }, {
+      "dependencies": [
+        ["page.type", { "oneOf": ["category", "listing", "search"] }]
+      ]
+    }],
+    ["listing.items[].currency", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["page.type", { "oneOf": ["category", "listing", "search"] }]
+      ]
+    }],
+    ["cart.id", { "string": true }, {
+      "dependencies": [
+        ["cart.id", { "notEmpty": true }]
+      ]
+    }],
+    ["cart.currency", { "notEmpty": true, "string": true }],
+    ["cart.subtotal", { "notEmpty": true, "numeric": true }],
+    ["cart.total", { "notEmpty": true, "numeric": true }],
+    ["cart.vouchers", { "array": true }, {
+      "dependencies": [
+        ["cart.vouchers", { "notEmpty": true }]
+      ]
+    }],
+    ["cart.voucherDiscount", { "numeric": true }, {
+      "dependencies": [
+        ["cart.voucherDiscount", { "notEmpty": true }]
+      ]
+    }],
+    ["cart.shippingCost", { "numeric": true }, {
+      "dependencies": [
+        ["cart.shippingCost", { "notEmpty": true }]
+      ]
+    }],
+    ["cart.shippingMethod", { "string": true }, {
+      "dependencies": [
+        ["cart.shippingMethod", { "notEmpty": true }]
+      ]
+    }],
+    ["cart.paymentMethod", { "string": true }, {
+      "dependencies": [
+        ["cart.paymentMethod", { "notEmpty": true }]
+      ]
+    }],
+    ["cart.lineItems[].product.id", { "notEmpty": true }],
+    ["cart.lineItems[].product.skuCode", { "notEmpty": true }],
+    ["cart.lineItems[].product.name", { "notEmpty": true }],
+    ["cart.lineItems[].product.category", { "notEmpty": true, "array": true }],
+    ["cart.lineItems[].product.categoryId", { "notEmpty": true, "string": true }],
+    ["cart.lineItems[].product.unitPrice", { "notEmpty": true, "numeric": true }],
+    ["cart.lineItems[].product.unitSalePrice", { "notEmpty": true, "numeric": true }],
+    ["cart.lineItems[].product.currency", { "notEmpty": true, "string": true }],
+  ],
+  "Viewed Product Listing": [
+    ["listing.categoryId", { "notEmpty": true, "string": true }],
+    ["listing.category", { "notEmpty": true, "array": true }],
+    ["listing.listId", { "notEmpty": true, "string": true }],
+    ["listing.listName", { "notEmpty": true, "string": true }],
+    ["listing.resultCount", { "notEmpty": true, "numeric": true }],
+    ["listing.pagesCount", { "notEmpty": true, "numeric": true }],
+    ["listing.currentPage", { "notEmpty": true, "numeric": true }],
+    ["listing.items[].id", { "notEmpty": true }],
+    ["listing.items[].skuCode", { "notEmpty": true }],
+    ["listing.items[].name", { "notEmpty": true }],
+    ["listing.items[].category", { "notEmpty": true, "array": true }],
+    ["listing.items[].categoryId", { "notEmpty": true, "string": true }],
+    ["listing.items[].unitPrice", { "notEmpty": true, "numeric": true }],
+    ["listing.items[].unitSalePrice", { "notEmpty": true, "numeric": true }],
+    ["listing.items[].currency", { "notEmpty": true, "string": true }],
+  ],
+  "Searched Products": [
+    ["listing.query", { "notEmpty": true, "string": true }],
+    ["listing.listId", { "notEmpty": true, "string": true }],
+    ["listing.listName", { "notEmpty": true, "string": true }],
+    ["listing.resultCount", { "notEmpty": true, "numeric": true }],
+    ["listing.pagesCount", { "notEmpty": true, "numeric": true }],
+    ["listing.currentPage", { "notEmpty": true, "numeric": true }],
+    ["listing.items[].id", { "notEmpty": true }],
+    ["listing.items[].skuCode", { "notEmpty": true }],
+    ["listing.items[].name", { "notEmpty": true }],
+    ["listing.items[].resultCount", { "notEmpty": true, "numeric": true }],
+    ["listing.items[].pagesCount", { "notEmpty": true, "numeric": true }],
+    ["listing.items[].currentPage", { "notEmpty": true, "numeric": true }],
+    ["listing.items[].category", { "notEmpty": true, "array": true }],
+    ["listing.items[].categoryId", { "notEmpty": true, "string": true }],
+    ["listing.items[].unitPrice", { "notEmpty": true, "numeric": true }],
+    ["listing.items[].unitSalePrice", { "notEmpty": true, "numeric": true }],
+    ["listing.items[].currency", { "notEmpty": true, "string": true }],
+  ],
+  "Added Product": [
+    ["product.id", { "notEmpty": true, "string": true }],
+    ["product.skuCode", { "notEmpty": true, "string": true }],
+    ["product.name", { "notEmpty": true, "string": true }],
+    ["product.category", { "notEmpty": true, "array": true }],
+    ["product.categoryId", { "notEmpty": true, "string": true }],
+    ["product.unitPrice", { "notEmpty": true, "numeric": true }],
+    ["product.unitSalePrice", { "notEmpty": true, "numeric": true }],
+    ["quantity", { "notEmpty": true, "numeric": true }],
+  ],
+  "Viewed Product Detail": [
+    ["product.id", { "notEmpty": true, "string": true }],
+    ["product.skuCode", { "notEmpty": true, "string": true }],
+    ["product.name", { "notEmpty": true, "string": true }],
+    ["product.category", { "notEmpty": true, "array": true }],
+    ["product.categoryId", { "notEmpty": true, "string": true }],
+    ["product.unitPrice", { "notEmpty": true, "numeric": true }],
+    ["product.unitSalePrice", { "notEmpty": true, "numeric": true }],
+    ["product.stock", { "notEmpty": true, "numeric": true }],
+  ],
+  "Removed Product": [
+    ["product.id", { "notEmpty": true, "string": true }],
+    ["product.skuCode", { "notEmpty": true, "string": true }],
+    ["product.name", { "notEmpty": true, "string": true }],
+    ["product.category", { "notEmpty": true, "array": true }],
+    ["product.categoryId", { "notEmpty": true, "string": true }],
+    ["product.unitPrice", { "notEmpty": true, "numeric": true }],
+    ["product.unitSalePrice", { "notEmpty": true, "numeric": true }],
+    ["quantity", { "notEmpty": true, "numeric": true }],
+  ],
+  "Viewed Product": [
+    ["listItems[].product.id", { "notEmpty": true, "string": true }],
+    ["listItems[].product.skuCode", { "notEmpty": true, "string": true }],
+    ["listItems[].product.name", { "notEmpty": true, "string": true }],
+    ["listItems[].product.category", { "notEmpty": true, "array": true }],
+    ["listItems[].product.categoryId", { "notEmpty": true, "string": true }],
+    ["listItems[].product.unitPrice", { "notEmpty": true, "numeric": true }],
+    ["listItems[].product.unitSalePrice", { "notEmpty": true, "numeric": true }],
+    ["listItems[].listId", { "notEmpty": true, "string": true }],
+    ["listItems[].listName", { "notEmpty": true, "string": true }],
+    ["listItems[].position", { "notEmpty": true, "numeric": true }]
+  ],
+  "Clicked Product": [
+    ["listItem.product.id", { "notEmpty": true, "string": true }],
+    ["listItem.product.skuCode", { "notEmpty": true, "string": true }],
+    ["listItem.product.name", { "notEmpty": true, "string": true }],
+    ["listItem.product.category", { "notEmpty": true, "array": true }],
+    ["listItem.product.categoryId", { "notEmpty": true, "string": true }],
+    ["listItem.product.unitPrice", { "notEmpty": true, "numeric": true }],
+    ["listItem.product.unitSalePrice", { "notEmpty": true, "numeric": true }],
+    ["listItem.listId", { "notEmpty": true, "string": true }],
+    ["listItem.listName", { "notEmpty": true, "string": true }],
+    ["listItem.position", { "notEmpty": true, "numeric": true }]
+  ],
+  "Viewed Cart": [
+    ["cart.id", { "string": true }, {
+      "dependencies": [
+        ["cart.id", { "notEmpty": true }]
+      ]
+    }],
+    ["cart.currency", { "notEmpty": true, "string": true }],
+    ["cart.subtotal", { "notEmpty": true, "numeric": true }],
+    ["cart.total", { "notEmpty": true, "numeric": true }],
+    ["cart.vouchers", { "array": true }, {
+      "dependencies": [
+        ["cart.vouchers", { "notEmpty": true }]
+      ]
+    }],
+    ["cart.voucherDiscount", { "numeric": true }, {
+      "dependencies": [
+        ["cart.voucherDiscount", { "notEmpty": true }]
+      ]
+    }],
+    ["cart.shippingCost", { "numeric": true }, {
+      "dependencies": [
+        ["cart.shippingCost", { "notEmpty": true }]
+      ]
+    }],
+    ["cart.shippingMethod", { "string": true }, {
+      "dependencies": [
+        ["cart.shippingMethod", { "notEmpty": true }]
+      ]
+    }],
+    ["cart.paymentMethod", { "string": true }, {
+      "dependencies": [
+        ["cart.paymentMethod", { "notEmpty": true }]
+      ]
+    }],
+    ["cart.lineItems[].product.id", { "notEmpty": true }],
+    ["cart.lineItems[].product.skuCode", { "notEmpty": true }],
+    ["cart.lineItems[].product.name", { "notEmpty": true }],
+    ["cart.lineItems[].product.category", { "notEmpty": true, "array": true }],
+    ["cart.lineItems[].product.categoryId", { "notEmpty": true, "string": true }],
+    ["cart.lineItems[].product.unitPrice", { "notEmpty": true, "numeric": true }],
+    ["cart.lineItems[].product.unitSalePrice", { "notEmpty": true, "numeric": true }],
+    ["cart.lineItems[].product.currency", { "notEmpty": true, "string": true }],
+  ],
+  "Completed Transaction": [
+    ["transaction.orderId", { "string": true }],
+    ["transaction.cartId", { "string": true }, {
+      "dependencies": [
+        ["transaction.cartId", { "notEmpty": true }]
+      ]
+    }],
+    ["transaction.currency", { "notEmpty": true, "string": true }],
+    ["transaction.subtotal", { "notEmpty": true, "numeric": true }],
+    ["transaction.total", { "notEmpty": true, "numeric": true }],
+    ["transaction.vouchers", { "array": true }, {
+      "dependencies": [
+        ["transaction.vouchers", { "notEmpty": true }]
+      ]
+    }],
+    ["transaction.voucherDiscount", { "numeric": true }, {
+      "dependencies": [
+        ["transaction.voucherDiscount", { "notEmpty": true }]
+      ]
+    }],
+    ["transaction.shippingCost", { "numeric": true }, {
+      "dependencies": [
+        ["transaction.shippingCost", { "notEmpty": true }]
+      ]
+    }],
+    ["transaction.shippingMethod", { "string": true }, {
+      "dependencies": [
+        ["transaction.shippingMethod", { "notEmpty": true }]
+      ]
+    }],
+    ["transaction.paymentMethod", { "string": true }, {
+      "dependencies": [
+        ["transaction.paymentMethod", { "notEmpty": true }]
+      ]
+    }],
+    ["transaction.isFirst", { "boolean": true }],
+    ["transaction.isReturning", { "boolean": true }],
+    ["transaction.lineItems[].product.id", { "notEmpty": true }],
+    ["transaction.lineItems[].product.skuCode", { "notEmpty": true }],
+    ["transaction.lineItems[].product.name", { "notEmpty": true }],
+    ["transaction.lineItems[].product.category", { "notEmpty": true, "array": true }],
+    ["transaction.lineItems[].product.categoryId", { "notEmpty": true, "string": true }],
+    ["transaction.lineItems[].product.unitPrice", { "notEmpty": true, "numeric": true }],
+    ["transaction.lineItems[].product.unitSalePrice", { "notEmpty": true, "numeric": true }],
+    ["transaction.lineItems[].product.currency", { "notEmpty": true, "string": true }],
+  ],
+  "Viewed Campaign": [
+    ["campaigns[].id", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaigns", { "array": true }]
+      ]
+    }],
+    ["campaigns[].name", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaigns", { "array": true }]
+      ]
+    }],
+    ["campaigns[].description", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaigns", { "array": true }],
+        ["campaigns[].description", { "notEmpty": true }]
+      ]
+    }],
+    ["campaigns[].category", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaigns", { "array": true }],
+        ["campaigns[].category", { "notEmpty": true }]
+      ]
+    }],
+    ["campaigns[].subcategory", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaigns", { "array": true }],
+        ["campaigns[].subcategory", { "notEmpty": true }]
+      ]
+    }],
+    ["campaigns[].design", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaigns", { "array": true }],
+        ["campaigns[].design", { "notEmpty": true }]
+      ]
+    }],
+    ["campaigns[].position", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaigns", { "array": true }],
+        ["campaigns[].position", { "notEmpty": true }]
+      ]
+    }],
+    ["campaign.id", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaign", { "notEmpty": true }]
+      ]
+    }],
+    ["campaign.name", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaign", { "notEmpty": true }]
+      ]
+    }],
+    ["campaign.description", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaign", { "notEmpty": true }],
+        ["campaign.description", { "notEmpty": true }]
+      ]
+    }],
+    ["campaign.category", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaign", { "notEmpty": true }],
+        ["campaign.category", { "notEmpty": true }]
+      ]
+    }],
+    ["campaign.subcategory", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaign", { "notEmpty": true }],
+        ["campaign.subcategory", { "notEmpty": true }]
+      ]
+    }],
+    ["campaign.design", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaign", { "notEmpty": true }],
+        ["campaign.design", { "notEmpty": true }]
+      ]
+    }],
+    ["campaign.position", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaign", { "notEmpty": true }],
+        ["campaign.position", { "notEmpty": true }]
+      ]
+    }],
+  ],
+  "Clicked Campaign": [
+    ["campaign.id", { "notEmpty": true, "string": true }],
+    ["campaign.name", { "notEmpty": true, "string": true }],
+    ["campaign.description", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaign.description", { "notEmpty": true }]
+      ]
+    }],
+    ["campaign.category", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaign.category", { "notEmpty": true }]
+      ]
+    }],
+    ["campaign.subcategory", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaign.subcategory", { "notEmpty": true }]
+      ]
+    }],
+    ["campaign.design", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaign.design", { "notEmpty": true }]
+      ]
+    }],
+    ["campaign.position", { "notEmpty": true, "string": true }, {
+      "dependencies": [
+        ["campaign.position", { "notEmpty": true }]
+      ]
+    }],
+  ]
+}

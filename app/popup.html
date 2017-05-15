@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- build:css styles/popup-vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css styles/main.css -->
+    <link href="styles/main.css" rel="stylesheet">
+    <!-- endbuild -->
+  </head>
+  <body>
+    <h1>DDManager Checker</h1>
+
+    <div id="not-found">DDManager is not found on <span id="domain">this website</span></div>
+    <div id="settings" style="display:none;">
+      <input type="button" id="enable" value="Disable Integration" />
+      <form id="settings-form">
+        <ul>
+          <li><input name="regions" type="checkbox" value="on"/><label>Has different regions</label></li>
+          <li><input name="authentication" type="checkbox" value="on"/><label>Has authentication</label></li>
+          <li><input name="namedPages" type="checkbox" value="on"/><label>Has named pages</label></li>
+          <li><input name="categorizedPages" type="checkbox" value="on"/><label>Has categorized pages</label></li>
+        </ul>
+        <input id="update-settings-btn" type="button" value="Update"/>
+      </form>
+    </div>
+
+    <!-- build:js scripts/popup-vendor.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- build:js scripts/popup.js -->
+    <script src="scripts/popup.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>

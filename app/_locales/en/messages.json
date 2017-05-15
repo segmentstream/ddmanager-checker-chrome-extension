@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "DDManager Checker",
+    "description": "DDManager Checker"
+  },
+  "appDescription": {
+    "message": "Helps to validate DDManager setup on your website",
+    "description": "Helps to validate DDManager setup on your website"
+  }
+}
